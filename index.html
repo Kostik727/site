@@ -1,0 +1,1230 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retenos — премиальная система лояльности для малого бизнеса</title>
+  <meta name="description" content="Retenos — современная система лояльности для малого бизнеса: цифровые карты, бонусы, сегментация клиентов, персональные акции и аккуратная аналитика." />
+  <style>
+    :root {
+      --bg: #0a0b0d;
+      --bg-2: #101216;
+      --panel: rgba(255,255,255,0.05);
+      --panel-2: rgba(255,255,255,0.03);
+      --line: rgba(255,255,255,0.08);
+      --line-strong: rgba(255,255,255,0.14);
+      --text: #f4f7fb;
+      --muted: #9ba3af;
+      --soft: #cfd5dc;
+      --white: #ffffff;
+      --accent: #f2f4f7;
+      --accent-dark: #101216;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --shadow-soft: 0 12px 36px rgba(0, 0, 0, 0.24);
+      --radius-sm: 18px;
+      --radius: 28px;
+      --radius-lg: 36px;
+      --max: 1220px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(255,255,255,0.07), transparent 28%),
+        radial-gradient(circle at 90% 10%, rgba(255,255,255,0.05), transparent 24%),
+        linear-gradient(180deg, #0a0b0d 0%, #0e1014 40%, #0a0b0d 100%);
+      line-height: 1.55;
+      letter-spacing: -0.01em;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 38px 38px;
+      mask-image: radial-gradient(circle at center, black 30%, transparent 82%);
+      opacity: 0.28;
+      z-index: 0;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section {
+      padding: 96px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.04);
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--white);
+      box-shadow: 0 0 16px rgba(255,255,255,0.75);
+    }
+
+    h1, h2, h3, h4, p { margin-top: 0; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(10, 11, 13, 0.7);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      border: 1px solid var(--line-strong);
+      background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: var(--white);
+      box-shadow: var(--shadow-soft);
+      flex: 0 0 auto;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .brand-text strong {
+      font-size: 16px;
+      color: var(--white);
+      letter-spacing: -0.02em;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .menu a {
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      transition: color .2s ease, opacity .2s ease;
+    }
+
+    .menu a:hover { color: var(--white); }
+
+    .nav-cta {
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      color: var(--accent-dark);
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero {
+      padding: 42px 0 36px;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      border-radius: 40px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08), transparent 22%),
+        radial-gradient(circle at 12% 80%, rgba(255,255,255,0.05), transparent 28%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+      padding: 36px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-main {
+      padding: 18px 6px 6px;
+    }
+
+    .hero-main h1 {
+      margin: 22px 0 18px;
+      font-size: clamp(44px, 7vw, 88px);
+      line-height: 0.93;
+      letter-spacing: -0.06em;
+      max-width: 860px;
+    }
+
+    .hero-main p {
+      max-width: 700px;
+      font-size: 19px;
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+
+    .btn {
+      min-height: 54px;
+      padding: 0 22px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+      cursor: pointer;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      background: var(--white);
+      color: var(--accent-dark);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.04);
+      color: var(--white);
+      border-color: var(--line-strong);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 760px;
+    }
+
+    .stat {
+      padding: 20px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 26px;
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .stat span { color: var(--muted); font-size: 14px; }
+
+    .hero-panel {
+      display: grid;
+      gap: 16px;
+    }
+
+    .glass {
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(12px);
+    }
+
+    .dashboard {
+      padding: 24px;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: space-between;
+    }
+
+    .dash-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .dash-top strong {
+      font-size: 16px;
+      letter-spacing: -0.02em;
+    }
+
+    .dash-chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: var(--soft);
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .kpi {
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .kpi strong {
+      display: block;
+      font-size: 24px;
+      margin-bottom: 6px;
+      letter-spacing: -0.04em;
+    }
+
+    .kpi span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .chart {
+      display: grid;
+      gap: 10px;
+    }
+
+    .chart-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chart-head span { color: var(--muted); font-size: 13px; }
+
+    .bars {
+      height: 148px;
+      display: flex;
+      align-items: end;
+      gap: 10px;
+      padding: 14px 0 6px;
+    }
+
+    .bar {
+      flex: 1;
+      border-radius: 16px 16px 6px 6px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.18));
+      opacity: 0.95;
+      position: relative;
+      min-height: 24px;
+    }
+
+    .bar::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: -24px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 34px;
+    }
+
+    .section-head .left {
+      max-width: 760px;
+    }
+
+    .section-head h2 {
+      margin: 16px 0 12px;
+      font-size: clamp(34px, 4.4vw, 60px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+    }
+
+    .section-head p {
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .section-link {
+      color: var(--soft);
+      font-size: 14px;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line-strong);
+      padding-bottom: 3px;
+      white-space: nowrap;
+    }
+
+    .grid-3,
+    .grid-4,
+    .pricing-grid,
+    .faq-grid,
+    .contact-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
+    .faq-grid { grid-template-columns: 1fr 1fr; }
+    .contact-grid { grid-template-columns: .9fr 1.1fr; align-items: stretch; }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      padding: 24px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.08), transparent 24%);
+      pointer-events: none;
+    }
+
+    .card .num,
+    .step-num {
+      width: 46px;
+      height: 46px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 16px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .card h3,
+    .pricing-card h3,
+    .faq-item h3,
+    .contact-card h3,
+    .process-card h3 {
+      font-size: 22px;
+      letter-spacing: -0.03em;
+      margin-bottom: 10px;
+    }
+
+    .card p,
+    .pricing-card p,
+    .faq-item p,
+    .contact-card p,
+    .process-card p,
+    .list,
+    .muted {
+      color: var(--muted);
+    }
+
+    .list {
+      padding-left: 18px;
+      margin: 18px 0 0;
+    }
+
+    .list li + li { margin-top: 8px; }
+
+    .process-card {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow-soft);
+    }
+
+    .pricing-card {
+      padding: 28px;
+      border-radius: 30px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-card.featured {
+      border-color: rgba(255,255,255,0.18);
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.15), transparent 25%),
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.05);
+      color: var(--soft);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      margin-bottom: 16px;
+    }
+
+    .price {
+      font-size: 48px;
+      line-height: 1;
+      letter-spacing: -0.06em;
+      color: var(--white);
+      margin: 10px 0 10px;
+      font-weight: 800;
+    }
+
+    .pricing-actions {
+      margin-top: 22px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .faq-item {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .proof {
+      padding: 28px;
+      border-radius: 34px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,0.08), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+
+    .proof-quote,
+    .proof-side {
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      padding: 24px;
+    }
+
+    .proof-quote blockquote {
+      margin: 0 0 18px;
+      font-size: clamp(22px, 2.7vw, 34px);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+      color: var(--white);
+    }
+
+    .proof-meta {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .mini-proof {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-proof .item {
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .mini-proof strong {
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    .contact-card {
+      padding: 32px;
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      box-shadow: var(--shadow);
+    }
+
+    .contact-card h2 {
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      margin: 18px 0 14px;
+    }
+
+    .contact-points {
+      display: grid;
+      gap: 12px;
+      margin-top: 26px;
+    }
+
+    .contact-point {
+      display: flex;
+      align-items: start;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.025);
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 999px;
+      margin-top: 7px;
+      background: var(--white);
+      box-shadow: 0 0 18px rgba(255,255,255,0.45);
+      flex: 0 0 auto;
+    }
+
+    form {
+      display: grid;
+      gap: 14px;
+      height: 100%;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      border: 1px solid var(--line-strong);
+      background: rgba(255,255,255,0.04);
+      color: var(--white);
+      border-radius: 18px;
+      padding: 16px 18px;
+      font: inherit;
+      outline: none;
+      transition: border-color .2s ease, background .2s ease, transform .2s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: rgba(255,255,255,0.28);
+      background: rgba(255,255,255,0.06);
+    }
+
+    input::placeholder,
+    textarea::placeholder { color: #8d95a1; }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-note {
+      color: var(--muted);
+      font-size: 13px;
+      margin: 2px 0 0;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 26px 0 44px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-top: 18px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .proof-grid,
+      .contact-grid,
+      .pricing-grid,
+      .faq-grid,
+      .grid-4,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .section-head {
+        flex-direction: column;
+        align-items: start;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .menu {
+        justify-content: center;
+      }
+
+      .hero-shell {
+        padding: 22px;
+      }
+
+      .hero-main h1 {
+        font-size: clamp(40px, 12vw, 64px);
+      }
+
+      .hero-stats,
+      .field-row,
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero {
+        padding-top: 22px;
+      }
+
+      .hero-shell,
+      .contact-card,
+      .pricing-card,
+      .faq-item,
+      .card,
+      .process-card,
+      .proof,
+      .proof-quote,
+      .proof-side {
+        border-radius: 24px;
+      }
+
+      .brand-text span { display: none; }
+
+      .nav-cta {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="brand">
+        <div class="brand-mark">R</div>
+        <div class="brand-text">
+          <strong>Retenos</strong>
+          <span>Система лояльности для малого бизнеса</span>
+        </div>
+      </a>
+
+      <nav class="menu">
+        <a href="#about">О продукте</a>
+        <a href="#features">Возможности</a>
+        <a href="#process">Процесс</a>
+        <a href="#pricing">Тарифы</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <a class="nav-cta" href="#contact">Запросить демо</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-shell reveal">
+          <div class="hero-grid">
+            <div class="hero-main">
+              <div class="eyebrow">Digital loyalty platform</div>
+              <h1>Система лояльности, которая выглядит как продукт уровня сильной команды</h1>
+              <p>Retenos — это премиально упакованный сервис для малого бизнеса: цифровые карты клиента, бонусные сценарии, персональные акции и аккуратная аналитика в строгом минимализме.</p>
+
+              <div class="hero-actions">
+                <a href="#contact" class="btn btn-primary">Получить презентацию</a>
+                <a href="#features" class="btn btn-secondary">Изучить возможности</a>
+              </div>
+
+              <div class="hero-stats">
+                <div class="stat">
+                  <strong>1 интерфейс</strong>
+                  <span>единая панель для команды и владельца</span>
+                </div>
+                <div class="stat">
+                  <strong>Без пластика</strong>
+                  <span>цифровой формат через QR и номер телефона</span>
+                </div>
+                <div class="stat">
+                  <strong>+ удержание</strong>
+                  <span>упор на повторные визиты и частоту покупок</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-panel">
+              <div class="dashboard glass">
+                <div class="dash-top">
+                  <strong>Панель результата</strong>
+                  <div class="dash-chip">Live overview</div>
+                </div>
+
+                <div class="kpi-grid">
+                  <div class="kpi">
+                    <strong>2 480</strong>
+                    <span>активных клиентов</span>
+                  </div>
+                  <div class="kpi">
+                    <strong>38%</strong>
+                    <span>доля повторных визитов</span>
+                  </div>
+                  <div class="kpi">
+                    <strong>+19%</strong>
+                    <span>рост вовлечения</span>
+                  </div>
+                  <div class="kpi">
+                    <strong>24/7</strong>
+                    <span>доступ к метрикам и акциям</span>
+                  </div>
+                </div>
+
+                <div class="chart">
+                  <div class="chart-head">
+                    <strong>Динамика возврата клиентов</strong>
+                    <span>последние 6 месяцев</span>
+                  </div>
+                  <div class="bars">
+                    <div class="bar" style="height: 34%;" data-label="Янв"></div>
+                    <div class="bar" style="height: 46%;" data-label="Фев"></div>
+                    <div class="bar" style="height: 52%;" data-label="Мар"></div>
+                    <div class="bar" style="height: 66%;" data-label="Апр"></div>
+                    <div class="bar" style="height: 78%;" data-label="Май"></div>
+                    <div class="bar" style="height: 88%;" data-label="Июн"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="left">
+            <div class="eyebrow">О продукте</div>
+            <h2>Не просто лендинг, а ощущение реального SaaS-продукта</h2>
+            <p>Этот сайт собран так, чтобы выглядеть как работа команды дизайнеров и разработчиков: строгая визуальная система, продуманная иерархия, дорогая типографика, аккуратные интерфейсные блоки и современная подача.</p>
+          </div>
+          <a href="#contact" class="section-link">Запросить персональное демо</a>
+        </div>
+
+        <div class="grid-3">
+          <div class="card reveal">
+            <div class="num">01</div>
+            <h3>Чистая продуктовая подача</h3>
+            <p>Без визуального мусора и дешёвых эффектов. Только строгие формы, ритм, воздух и ощущение уверенного digital-сервиса.</p>
+          </div>
+          <div class="card reveal">
+            <div class="num">02</div>
+            <h3>Для малого бизнеса</h3>
+            <p>Кофейни, салоны, магазины, доставки, студии, локальные сервисы — платформа упакована под реальную повседневную работу небольшой команды.</p>
+          </div>
+          <div class="card reveal">
+            <div class="num">03</div>
+            <h3>Фокус на возврат клиента</h3>
+            <p>Бонусы, накопления, сегментация и персональные предложения помогают повышать частоту повторных покупок и удержание базы.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="left">
+            <div class="eyebrow">Возможности</div>
+            <h2>Функции, которые выглядят строго и работают понятно</h2>
+            <p>Нужный набор возможностей без перегруза: всё, что помогает запускать лояльность красиво, быстро и с контролем результата.</p>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card reveal">
+            <h3>Цифровая карта клиента</h3>
+            <p>Идентификация по номеру телефона или QR-коду. Клиенту не нужно носить пластиковую карту или отдельное приложение.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Бонусные механики</h3>
+            <p>Баллы, кешбэк, накопительные сценарии, штампы и подарки — всё можно адаптировать под маржу и средний чек бизнеса.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Персональные акции</h3>
+            <p>Точные офферы для новых, постоянных и неактивных клиентов. Без хаотичных скидок для всех подряд.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Сегментация аудитории</h3>
+            <p>Разделение базы на понятные группы помогает строить точные коммуникации и повышать конверсию повторных касаний.</p>
+          </div>
+          <div class="card reveal">
+            <h3>История взаимодействий</h3>
+            <p>Покупки, повторы, участие в акциях и поведение клиента отображаются в одном аккуратном сценарии.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Аккуратная аналитика</h3>
+            <p>Панель показывает активность, возвраты, эффективность механик и общее состояние клиентской базы без сложных отчётов.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="left">
+            <div class="eyebrow">Процесс</div>
+            <h2>Запуск без лишней сложности</h2>
+            <p>Платформа выстроена так, чтобы её можно было внедрить быстро, без ощущения тяжёлого корпоративного продукта.</p>
+          </div>
+        </div>
+
+        <div class="grid-4">
+          <div class="process-card reveal">
+            <div class="step-num">1</div>
+            <h3>Выбор модели</h3>
+            <p>Определяется формат: бонусы, накопления, кешбэк, штампы, подарки или гибридная схема.</p>
+          </div>
+          <div class="process-card reveal">
+            <div class="step-num">2</div>
+            <h3>Подключение базы</h3>
+            <p>Клиенты подключаются через номер телефона или QR-код без лишней нагрузки на персонал.</p>
+          </div>
+          <div class="process-card reveal">
+            <div class="step-num">3</div>
+            <h3>Запуск сценариев</h3>
+            <p>Создаются акции для приветствия, возврата, повторной покупки и персонального предложения.</p>
+          </div>
+          <div class="process-card reveal">
+            <div class="step-num">4</div>
+            <h3>Контроль результата</h3>
+            <p>Метрики показывают, какие механики действительно удерживают клиента и улучшают частоту визитов.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="proof reveal">
+          <div class="proof-grid">
+            <div class="proof-quote">
+              <blockquote>
+                «Retenos выглядит как цифровой продукт высокого уровня, но при этом остаётся понятным для малого бизнеса. Именно так должен ощущаться современный сервис лояльности»
+              </blockquote>
+              <div class="proof-meta">Пример позиционирования / product narrative block</div>
+            </div>
+            <div class="proof-side">
+              <div class="mini-proof">
+                <div class="item">
+                  <strong>Premium UI</strong>
+                  <span class="muted">дорогая визуальная подача</span>
+                </div>
+                <div class="item">
+                  <strong>Fast launch</strong>
+                  <span class="muted">быстрый запуск без тяжёлого внедрения</span>
+                </div>
+                <div class="item">
+                  <strong>Retention first</strong>
+                  <span class="muted">упор на возврат и удержание клиента</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="left">
+            <div class="eyebrow">Тарифы</div>
+            <h2>Простая коммерческая структура</h2>
+            <p>Этот блок уже выглядит как реальная продуктовая монетизация. Позже сюда можно подставить настоящие цены и ограничения.</p>
+          </div>
+        </div>
+
+        <div class="pricing-grid">
+          <div class="pricing-card reveal">
+            <div class="tag">Для старта</div>
+            <h3>Core</h3>
+            <div class="price">от 19 900 ₸</div>
+            <p>Для одной точки или небольшой команды, которой нужен первый аккуратный контур лояльности.</p>
+            <ul class="list">
+              <li>цифровая карта клиента</li>
+              <li>бонусные сценарии</li>
+              <li>регистрация и база клиентов</li>
+              <li>базовая аналитика</li>
+            </ul>
+            <div class="pricing-actions">
+              <a href="#contact" class="btn btn-primary">Оставить заявку</a>
+            </div>
+          </div>
+
+          <div class="pricing-card featured reveal">
+            <div class="tag">Оптимальный выбор</div>
+            <h3>Premium</h3>
+            <div class="price">от 39 900 ₸</div>
+            <p>Для бизнеса, который хочет строить системную работу с повторными покупками, сегментацией и персональными офферами.</p>
+            <ul class="list">
+              <li>всё из тарифа Core</li>
+              <li>сегментация базы</li>
+              <li>персональные предложения</li>
+              <li>расширенная аналитика по удержанию</li>
+            </ul>
+            <div class="pricing-actions">
+              <a href="#contact" class="btn btn-primary">Запросить демо</a>
+              <a href="#faq" class="btn btn-secondary">Подробнее</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="left">
+            <div class="eyebrow">FAQ</div>
+            <h2>Частые вопросы</h2>
+            <p>Короткие ответы на вопросы, которые обычно задают владельцы малого бизнеса перед внедрением.</p>
+          </div>
+        </div>
+
+        <div class="faq-grid">
+          <div class="faq-item reveal">
+            <h3>Подойдёт ли сервис для одной точки?</h3>
+            <p>Да. Сайт и продуктовая подача построены так, чтобы хорошо работать для компактного бизнеса: салона, кофейни, магазина, студии или сервиса.</p>
+          </div>
+          <div class="faq-item reveal">
+            <h3>Нужно ли отдельное приложение?</h3>
+            <p>Нет. В базовом сценарии клиент может использовать номер телефона или QR-код без необходимости ставить дополнительное приложение.</p>
+          </div>
+          <div class="faq-item reveal">
+            <h3>Можно ли запускать разные акции?</h3>
+            <p>Да. Приветственные бонусы, реактивация, подарки, накопительные механики и персональные предложения легко адаптируются под нишу.</p>
+          </div>
+          <div class="faq-item reveal">
+            <h3>Сложно ли внедрить?</h3>
+            <p>Нет. Идея как раз в том, чтобы создать ощущение сильного технологичного продукта без тяжёлого корпоративного внедрения.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <div class="eyebrow">Контактный блок</div>
+            <h2>Сделаем так, чтобы твой проект выглядел как работа сильной команды</h2>
+            <p>Оставь заявку, если хочешь адаптировать Retenos под конкретную нишу: кофейню, салон, магазин, доставку, ресторан или сеть локальных точек.</p>
+
+            <div class="contact-points">
+              <div class="contact-point">
+                <div class="dot"></div>
+                <div>
+                  <strong>Строгий визуальный стиль</strong>
+                  <div class="muted">минимализм, темные тона, серо-белая палитра</div>
+                </div>
+              </div>
+              <div class="contact-point">
+                <div class="dot"></div>
+                <div>
+                  <strong>Продуктовое ощущение</strong>
+                  <div class="muted">сайт выглядит как настоящий SaaS, а не шаблонный лендинг</div>
+                </div>
+              </div>
+              <div class="contact-point">
+                <div class="dot"></div>
+                <div>
+                  <strong>Готов к доработке</strong>
+                  <div class="muted">сюда можно подключить Telegram, WhatsApp, CRM или backend</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-card reveal">
+            <form onsubmit="sendForm(event)">
+              <div class="field-row">
+                <input type="text" placeholder="Ваше имя" required />
+                <input type="tel" placeholder="Телефон" required />
+              </div>
+              <div class="field-row">
+                <input type="text" placeholder="Название бизнеса" required />
+                <select required>
+                  <option value="">Выберите нишу</option>
+                  <option>Кофейня</option>
+                  <option>Салон красоты</option>
+                  <option>Магазин</option>
+                  <option>Доставка</option>
+                  <option>Студия / сервис</option>
+                  <option>Другое</option>
+                </select>
+              </div>
+              <textarea placeholder="Коротко опишите задачу, формат бизнеса и что вы хотите от системы лояльности"></textarea>
+              <button class="btn btn-primary" type="submit">Отправить заявку</button>
+              <p class="form-note">Сейчас форма показывает demo-уведомление. Дальше можно подключить отправку в Telegram, WhatsApp или на backend.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>© 2026 Retenos</div>
+      <div>Премиальная система лояльности для малого бизнеса</div>
+    </div>
+  </footer>
+
+  <script>
+    function sendForm(event) {
+      event.preventDefault();
+      alert('Заявка отправлена. Следующим шагом сюда можно подключить Telegram, WhatsApp или backend.');
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
+
+
+

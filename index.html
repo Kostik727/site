@@ -24,7 +24,7 @@
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
     body {
       margin: 0;
       min-height: 100vh;
@@ -32,6 +32,7 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
+      width: 100%;
       line-height: 1.55;
     }
 
@@ -231,6 +232,16 @@
     .grid-3 { grid-template-columns: repeat(3, 1fr); }
     .grid-2 { grid-template-columns: repeat(2, 1fr); }
     .industries { grid-template-columns: repeat(3, 1fr); }
+
+    .hero > *,
+    .split > *,
+    .grid-2 > *,
+    .grid-3 > *,
+    .grid-4 > *,
+    .industries > *,
+    .demo-flex > * {
+      min-width: 0;
+    }
 
     .card,
     .demo-panel,
@@ -894,7 +905,7 @@
         </div>
       </section>
 
-      <section class="section split" style="grid-template-columns: 1fr 1fr;">
+      <section class="section split split-equal">
         <div>
           <div class="eyebrow">Экосистема</div>
           <h2 style="margin-top: 16px;">Retkit строит экосистему бизнеса</h2>
@@ -965,6 +976,9 @@
   </script>
 </body>
 </html>
+
+
+
 
 
 

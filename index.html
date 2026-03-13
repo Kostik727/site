@@ -3,31 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Retkit - beta-платформа лояльности для бизнеса</title>
-  <meta
-    name="description"
-    content="Retkit - система лояльности для бизнеса через Telegram и WhatsApp: QR-подключение, база клиентов, бонусная система и beta-доступ для ранних партнеров."
-  />
+  <title>Retkit - система лояльности через Telegram и WhatsApp</title>
+  <meta name="description" content="Retkit - beta-платформа лояльности через Telegram и WhatsApp: QR-подключение, база клиентов, Founding Partners и будущие инструменты роста для бизнеса." />
   <style>
     :root {
-      --bg: #06070a;
-      --panel: rgba(255, 255, 255, 0.03);
-      --panel-strong: rgba(255, 255, 255, 0.04);
-      --line: rgba(255, 255, 255, 0.10);
-      --line-strong: rgba(255, 255, 255, 0.15);
+      --bg: #05070b;
+      --panel: rgba(255,255,255,0.03);
+      --panel-hover: rgba(255,255,255,0.05);
+      --line: rgba(255,255,255,0.10);
+      --line-strong: rgba(255,255,255,0.20);
       --text: #ffffff;
-      --muted: rgba(255, 255, 255, 0.65);
-      --muted-soft: rgba(255, 255, 255, 0.55);
-      --muted-faint: rgba(255, 255, 255, 0.35);
-      --emerald: #6ee7b7;
-      --cyan: #67e8f9;
-      --fuchsia: #f0abfc;
-      --danger: #fca5a5;
-      --shadow: 0 28px 70px rgba(0, 0, 0, 0.35);
-      --radius-lg: 36px;
-      --radius: 28px;
+      --muted: rgba(255,255,255,0.60);
+      --muted-soft: rgba(255,255,255,0.55);
+      --muted-faint: rgba(255,255,255,0.35);
+      --shadow: 0 28px 70px rgba(0,0,0,0.32);
+      --radius-xl: 32px;
+      --radius-lg: 28px;
       --radius-md: 24px;
-      --radius-sm: 18px;
       --max: 1280px;
     }
 
@@ -39,28 +31,23 @@
       font-family: Inter, Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.55;
       overflow-x: hidden;
+      line-height: 1.55;
     }
 
-    a, button {
-      font: inherit;
-      color: inherit;
-    }
-
-    button {
-      cursor: pointer;
-      border: 0;
-    }
+    a, button { font: inherit; color: inherit; }
+    a { text-decoration: none; }
+    button { cursor: pointer; border: 0; }
+    img { display: block; max-width: 100%; }
 
     .page {
       position: relative;
       min-height: 100vh;
       background:
-        radial-gradient(circle at 50% 0%, rgba(217, 70, 239, 0.12), transparent 28%),
-        radial-gradient(circle at 88% 22%, rgba(34, 211, 238, 0.10), transparent 20%),
-        radial-gradient(circle at 8% 90%, rgba(255, 255, 255, 0.05), transparent 16%),
-        linear-gradient(180deg, #06070a 0%, #080a0f 55%, #06070a 100%);
+        radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.10), transparent 30%),
+        radial-gradient(circle at 100% 18%, rgba(34, 211, 238, 0.10), transparent 22%),
+        radial-gradient(circle at 8% 100%, rgba(255,255,255,0.05), transparent 18%),
+        linear-gradient(180deg, #05070b 0%, #080b11 55%, #05070b 100%);
     }
 
     .page::before {
@@ -71,42 +58,41 @@
       background-image:
         linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 36px 36px;
+      background-size: 34px 34px;
       mask-image: radial-gradient(circle at center, black 24%, transparent 78%);
-      opacity: 0.35;
+      opacity: 0.34;
     }
 
     .glow {
       position: absolute;
       border-radius: 999px;
-      filter: blur(72px);
+      filter: blur(74px);
       pointer-events: none;
-      z-index: 0;
     }
 
     .glow.one {
       left: 50%;
       top: 0;
-      width: 520px;
-      height: 520px;
+      width: 640px;
+      height: 640px;
       transform: translateX(-50%);
-      background: rgba(217, 70, 239, 0.12);
+      background: rgba(139, 92, 246, 0.10);
     }
 
     .glow.two {
-      right: 12%;
-      top: 22%;
-      width: 360px;
-      height: 360px;
+      right: 0;
+      top: 18%;
+      width: 420px;
+      height: 420px;
       background: rgba(34, 211, 238, 0.10);
     }
 
     .glow.three {
       left: 8%;
-      bottom: 10%;
-      width: 280px;
-      height: 280px;
-      background: rgba(255, 255, 255, 0.05);
+      bottom: 0;
+      width: 320px;
+      height: 320px;
+      background: rgba(255,255,255,0.05);
     }
 
     .container {
@@ -114,108 +100,92 @@
       z-index: 1;
       width: min(var(--max), calc(100% - 48px));
       margin: 0 auto;
-      padding: 32px 0 96px;
+      padding: 40px 0 128px;
     }
 
-    .section {
-      margin-top: 96px;
-    }
+    .section { margin-top: 112px; }
 
-    .topbar {
+    .header {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
       padding: 14px 20px;
+      margin-bottom: 64px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255,255,255,0.03);
       backdrop-filter: blur(20px);
     }
 
     .brand {
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.2em;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.25em;
     }
 
-    .topbar-actions {
+    .header-actions {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    .badge {
+    .pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       min-height: 36px;
       padding: 0 14px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255,255,255,0.04);
       font-size: 12px;
-      color: var(--muted);
+      color: var(--muted-soft);
     }
 
-    .badge-emerald {
-      border-color: rgba(110, 231, 183, 0.2);
-      background: rgba(110, 231, 183, 0.1);
-      color: #a7f3d0;
-    }
-
-    .dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: #4ade80;
-      box-shadow: 0 0 16px rgba(74, 222, 128, 0.7);
+    .pill.beta {
+      border-color: rgba(52, 211, 153, 0.20);
+      background: rgba(52, 211, 153, 0.10);
+      color: #86efac;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 32px;
+      gap: 48px;
+      grid-template-columns: 1.02fr 0.98fr;
       align-items: center;
-      margin-top: 32px;
     }
 
-    .hero-copy {
-      max-width: 760px;
-    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2 { letter-spacing: -0.05em; }
 
-    .hero h1,
-    h2 {
-      margin: 0;
-      letter-spacing: -0.05em;
-    }
-
-    .hero h1 {
-      font-size: clamp(44px, 7vw, 84px);
+    h1 {
+      font-size: clamp(46px, 7vw, 82px);
       line-height: 1.02;
+      margin-bottom: 0;
     }
 
-    .headline-shine {
-      background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0.95), rgba(255,255,255,0.48));
+    h2 {
+      font-size: clamp(34px, 4.5vw, 60px);
+      line-height: 1.05;
+      margin-bottom: 0;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, rgba(255,255,255,1), rgba(255,255,255,0.95), rgba(255,255,255,0.60));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .lead {
-      margin: 24px 0 0;
-      max-width: 700px;
-      font-size: 21px;
-      line-height: 1.8;
+    .lead, .section-copy {
       color: var(--muted);
+      font-size: 20px;
+      line-height: 1.8;
     }
 
-    .lead strong {
-      color: #fff;
-      font-weight: 500;
-    }
+    .hero .lead { max-width: 760px; margin-top: 24px; }
 
-    .actions {
+    .cta-row {
       display: flex;
       flex-wrap: wrap;
       gap: 16px;
@@ -233,235 +203,237 @@
 
     .btn-primary {
       background: #fff;
-      color: #05070b;
-      font-weight: 600;
+      color: #000;
+      font-weight: 500;
     }
 
     .btn-secondary {
       border: 1px solid var(--line-strong);
-      background: rgba(255,255,255,0.03);
-      color: rgba(255,255,255,0.82);
+      background: transparent;
+      color: rgba(255,255,255,0.90);
     }
 
-    .metric-grid,
-    .card-grid,
-    .industry-grid,
-    .feature-grid,
-    .step-grid {
+    .mini-grid,
+    .grid-4,
+    .grid-3,
+    .grid-2,
+    .industries {
       display: grid;
       gap: 16px;
     }
 
-    .metric-grid {
-      grid-template-columns: repeat(3, 1fr);
+    .mini-grid {
       margin-top: 40px;
-    }
-
-    .step-grid {
-      grid-template-columns: repeat(4, 1fr);
-      margin-top: 40px;
-    }
-
-    .card-grid.four {
-      grid-template-columns: repeat(4, 1fr);
-    }
-
-    .card-grid.two {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .feature-grid {
       grid-template-columns: repeat(3, 1fr);
-      margin-top: 40px;
     }
 
-    .industry-grid {
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 24px;
-    }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .industries { grid-template-columns: repeat(3, 1fr); }
 
-    .panel,
-    .metric,
     .card,
-    .feature-card,
+    .demo-panel,
     .step,
-    .industry,
-    .cta-box,
-    .roadmap-card {
-      border-radius: var(--radius);
+    .roadmap-card,
+    .final-box,
+    .industry {
+      border-radius: var(--radius-lg);
       border: 1px solid var(--line);
       background: var(--panel);
-      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
     }
 
-    .metric,
     .card,
-    .feature-card,
     .step,
-    .industry,
-    .roadmap-card {
+    .roadmap-card,
+    .industry {
       padding: 24px;
-      box-shadow: none;
+      transition: transform .3s ease, background .3s ease;
     }
 
-    .metric-label,
+    .card:hover,
+    .step:hover,
+    .industry:hover {
+      transform: translateY(-4px);
+      background: var(--panel-hover);
+    }
+
     .eyebrow {
       font-size: 12px;
-      letter-spacing: 0.18em;
       text-transform: uppercase;
+      letter-spacing: 0.2em;
       color: var(--muted-faint);
     }
 
-    .metric-value {
-      margin-top: 12px;
+    .mini-card {
+      padding: 16px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .mini-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted-faint);
+    }
+
+    .mini-value {
+      margin-top: 8px;
       font-size: 20px;
       font-weight: 600;
     }
 
-    .preview-wrap {
-      border-radius: 32px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      padding: 16px;
-      box-shadow: 0 30px 80px rgba(0,0,0,0.45);
-      backdrop-filter: blur(24px);
-    }
-
-    .preview {
-      border-radius: 28px;
-      border: 1px solid var(--line);
-      background: #0c1016;
+    .demo-panel {
       padding: 24px;
+      background: #0c1016;
+      box-shadow: var(--shadow);
     }
 
-    .preview-top {
+    .demo-top {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--line);
+      margin-bottom: 24px;
     }
 
-    .preview-title {
+    .demo-title {
       margin-top: 8px;
       font-size: 32px;
       font-weight: 600;
     }
 
-    .preview-chip {
-      min-height: 32px;
-      padding: 0 12px;
+    .demo-chip {
+      padding: 6px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(34, 211, 238, 0.2);
-      background: rgba(34, 211, 238, 0.1);
-      color: #67e8f9;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted-soft);
       font-size: 12px;
-      display: inline-flex;
-      align-items: center;
     }
 
-    .mini-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 24px;
-    }
-
-    .mini-stat,
-    .preview-card {
+    .demo-card {
+      padding: 20px;
       border-radius: 24px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.03);
-      padding: 20px;
     }
 
-    .big-number {
-      margin-top: 12px;
-      font-size: 42px;
-      font-weight: 600;
+    .demo-stack {
+      display: grid;
+      gap: 16px;
     }
 
-    .subtext {
-      margin-top: 8px;
-      font-size: 14px;
-      color: var(--muted-soft);
-    }
-
-    .preview-card {
-      margin-top: 16px;
-    }
-
-    .preview-row {
+    .demo-flex {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
     }
 
-    .qr-box {
-      width: 80px;
-      height: 80px;
+    .qr-link {
+      position: relative;
       display: grid;
+      width: 64px;
+      height: 64px;
       place-items: center;
+      overflow: hidden;
       border-radius: 18px;
       border: 1px solid var(--line);
-      background: #131822;
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      color: rgba(255,255,255,0.45);
+      background: rgba(255,255,255,0.04);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .qr-link:hover {
+      transform: scale(1.03);
+      border-color: rgba(103, 232, 249, 0.40);
+    }
+
+    .qr-link::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(103,232,249,0.10), transparent);
+      animation: pulse 1.8s infinite;
+    }
+
+    .qr-link img {
+      position: relative;
+      z-index: 1;
+      width: 64px;
+      height: 64px;
+      object-fit: contain;
     }
 
     .progress {
       height: 8px;
+      margin-top: 16px;
       border-radius: 999px;
       background: rgba(255,255,255,0.10);
       overflow: hidden;
-      margin-top: 16px;
     }
 
     .progress > span {
       display: block;
-      width: 72%;
       height: 100%;
+      width: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #f472b6, #a78bfa, #67e8f9);
+      background: linear-gradient(90deg, #22d3ee, #8b5cf6, #d946ef);
+      animation: pulse 1.8s infinite;
     }
 
-    h2 {
-      font-size: clamp(34px, 4.6vw, 62px);
-      line-height: 1.05;
+    .progress.founding > span {
+      width: 24%;
+      background: linear-gradient(90deg, #34d399, #22d3ee);
+      animation: none;
     }
 
-    .section-head {
-      max-width: 760px;
+    .good-text { color: #86efac; }
+
+    .demo-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 16px;
     }
 
-    .section-copy {
-      margin-top: 20px;
-      font-size: 20px;
-      line-height: 1.8;
-      color: var(--muted);
+    .demo-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
     }
 
-    .card-tag {
-      display: inline-flex;
-      min-height: 32px;
+    .demo-item,
+    .stat-row {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.72);
+      font-size: 14px;
+    }
+
+    .stat-row {
+      display: flex;
       align-items: center;
-      padding: 0 12px;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .section-copy { margin-top: 24px; max-width: 860px; }
+
+    .tag-danger {
+      display: inline-flex;
+      padding: 6px 12px;
+      margin-bottom: 16px;
       border-radius: 999px;
-      border: 1px solid rgba(248, 113, 113, 0.15);
-      background: rgba(248, 113, 113, 0.10);
+      border: 1px solid rgba(248,113,113,0.20);
+      background: rgba(248,113,113,0.10);
       color: #fca5a5;
       font-size: 12px;
-      margin-bottom: 18px;
-    }
-
-    .card p,
-    .step p,
-    .roadmap-card p {
-      margin: 0;
-      color: var(--muted);
     }
 
     .step-num {
@@ -471,8 +443,8 @@
       place-items: center;
       margin-bottom: 18px;
       border-radius: 16px;
-      border: 1px solid var(--line-strong);
-      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.03);
       font-size: 14px;
       font-weight: 600;
     }
@@ -480,32 +452,19 @@
     .split {
       display: grid;
       gap: 32px;
-    }
-
-    .split.two {
-      grid-template-columns: 1fr 1fr;
       align-items: start;
+      grid-template-columns: 0.94fr 1.06fr;
     }
 
-    .split.founding {
-      grid-template-columns: 0.9fr 1.1fr;
-    }
-
-    .split.ecosystem {
-      grid-template-columns: 0.95fr 1.05fr;
-    }
-
-    .highlight-box {
-      margin-top: 24px;
+    .highlight {
+      margin-top: 28px;
       padding: 20px;
       border-radius: 24px;
-      border: 1px solid rgba(110, 231, 183, 0.15);
-      background: rgba(110, 231, 183, 0.10);
+      border: 1px solid rgba(52,211,153,0.20);
+      background: rgba(52,211,153,0.10);
     }
 
-    .highlight-box .eyebrow {
-      color: rgba(167, 243, 208, 0.7);
-    }
+    .highlight .eyebrow { color: rgba(167,243,208,0.80); }
 
     .highlight-title {
       margin-top: 8px;
@@ -514,153 +473,101 @@
     }
 
     .list {
+      margin-top: 20px;
       display: grid;
       gap: 12px;
-      margin-top: 20px;
     }
 
-    .list-item {
+    .list-row {
       display: flex;
       align-items: flex-start;
       gap: 12px;
-      color: rgba(255,255,255,0.75);
-      font-size: 15px;
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
     }
 
-    .list-bullet {
-      width: 8px;
-      height: 8px;
+    .bullet {
+      width: 6px;
+      height: 6px;
       margin-top: 8px;
       flex: 0 0 auto;
       border-radius: 999px;
-      background: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.70);
     }
 
-    .accent-tag {
+    .roadmap-badge {
       display: inline-flex;
-      align-items: center;
-      min-height: 32px;
-      padding: 0 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      font-size: 12px;
-      color: rgba(255,255,255,0.55);
-      margin-bottom: 14px;
-    }
-
-    .roadmap-tag {
-      display: inline-flex;
-      min-height: 34px;
-      align-items: center;
-      padding: 0 14px;
+      padding: 6px 12px;
       border-radius: 999px;
       border: 1px solid transparent;
       font-size: 12px;
-      font-weight: 500;
-      margin-bottom: 18px;
     }
 
-    .roadmap-tag.now {
-      border-color: rgba(110, 231, 183, 0.15);
-      background: rgba(110, 231, 183, 0.10);
-      color: #6ee7b7;
+    .roadmap-badge.now {
+      border-color: rgba(52,211,153,0.20);
+      background: rgba(52,211,153,0.10);
+      color: #86efac;
     }
 
-    .roadmap-tag.next {
-      border-color: rgba(34, 211, 238, 0.15);
-      background: rgba(34, 211, 238, 0.10);
+    .roadmap-badge.next {
+      border-color: rgba(34,211,238,0.20);
+      background: rgba(34,211,238,0.10);
       color: #67e8f9;
     }
 
-    .roadmap-tag.later {
-      border-color: rgba(217, 70, 239, 0.15);
-      background: rgba(217, 70, 239, 0.10);
+    .roadmap-badge.later {
+      border-color: rgba(217,70,239,0.20);
+      background: rgba(217,70,239,0.10);
       color: #f0abfc;
     }
 
-    .industry {
-      font-size: 24px;
-      font-weight: 500;
-      color: rgba(255,255,255,0.90);
-    }
-
-    .cta-box {
+    .final-box {
       padding: 32px;
-      background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03), rgba(255,255,255,0.02));
-    }
-
-    .cta-grid {
-      display: grid;
-      grid-template-columns: 1fr 280px;
-      gap: 32px;
-      align-items: center;
-    }
-
-    .qr-panel {
-      width: 280px;
-      height: 280px;
-      margin: 0 auto;
-      display: grid;
-      place-items: center;
-      border-radius: 32px;
-      border: 1px solid var(--line);
-      background: #0b1018;
       text-align: center;
     }
 
-    .qr-core {
-      width: 128px;
-      height: 128px;
-      margin: 0 auto;
-      display: grid;
-      place-items: center;
-      border-radius: 24px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      font-size: 14px;
-      letter-spacing: 0.25em;
-      color: rgba(255,255,255,0.45);
+    .final-box .section-copy {
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    .qr-panel p {
-      margin: 0;
-      color: var(--muted-soft);
-    }
-
-    .qr-panel strong {
-      display: block;
-      margin-top: 8px;
-      font-size: 20px;
-    }
-
-    .reveal {
+    .sticky-cta {
+      position: fixed;
+      left: 50%;
+      bottom: 24px;
+      z-index: 50;
+      transform: translateX(-50%) translateY(18px);
       opacity: 0;
-      transform: translateY(18px);
-      transition: opacity .7s ease, transform .7s ease;
+      pointer-events: none;
+      transition: opacity .25s ease, transform .25s ease;
     }
 
-    .reveal.visible {
+    .sticky-cta.visible {
       opacity: 1;
-      transform: translateY(0);
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
     }
 
-    @media (max-width: 1150px) {
+    .sticky-cta .btn {
+      padding: 0 28px;
+      min-height: 56px;
+      box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.75; }
+      50% { opacity: 1; }
+    }
+
+    @media (max-width: 1120px) {
       .hero,
-      .split.two,
-      .split.founding,
-      .split.ecosystem,
-      .cta-grid,
-      .feature-grid,
-      .card-grid.four {
+      .split,
+      .grid-3,
+      .industries {
         grid-template-columns: 1fr;
       }
 
-      .step-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .industry-grid {
+      .grid-4 {
         grid-template-columns: repeat(2, 1fr);
       }
     }
@@ -668,40 +575,45 @@
     @media (max-width: 760px) {
       .container {
         width: min(var(--max), calc(100% - 24px));
-        padding-top: 20px;
+        padding-top: 24px;
+        padding-bottom: 120px;
       }
 
-      .topbar {
+      .section { margin-top: 88px; }
+
+      .header {
+        flex-direction: column;
+        align-items: stretch;
         border-radius: 28px;
+      }
+
+      .header-actions {
         flex-direction: column;
         align-items: stretch;
       }
 
-      .topbar-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .metric-grid,
-      .mini-stats,
-      .card-grid.two,
-      .industry-grid,
-      .step-grid {
+      .mini-grid,
+      .grid-4,
+      .grid-2,
+      .industries {
         grid-template-columns: 1fr;
       }
 
-      .hero h1 {
-        font-size: clamp(38px, 12vw, 58px);
+      h1 { font-size: clamp(38px, 12vw, 58px); }
+      .lead, .section-copy { font-size: 18px; line-height: 1.7; }
+
+      .sticky-cta {
+        left: 12px;
+        right: 12px;
+        transform: translateY(18px);
       }
 
-      .lead,
-      .section-copy {
-        font-size: 18px;
-        line-height: 1.7;
+      .sticky-cta.visible {
+        transform: translateY(0);
       }
 
-      .cta-box {
-        padding: 24px;
+      .sticky-cta .btn {
+        width: 100%;
       }
     }
   </style>
@@ -713,341 +625,238 @@
     <div class="glow three"></div>
 
     <main class="container">
-      <header class="topbar reveal">
+      <header class="header">
         <div class="brand">RETKIT</div>
-        <div class="topbar-actions">
-          <span class="badge badge-emerald">Founding Partners Beta</span>
-          <button class="btn btn-secondary" type="button">Получить доступ</button>
+        <div class="header-actions">
+          <div class="pill beta">Founding Partners Beta</div>
+          <button class="btn btn-secondary" type="button">Стать партнёром</button>
         </div>
       </header>
 
       <section class="hero">
-        <div class="hero-copy reveal">
-          <div class="badge">
-            <span class="dot"></span>
-            Бесплатный Beta-доступ на 1 год для ранних партнеров
-          </div>
-
-          <h1>
-            Лояльность для бизнеса, которая начинается с
-            <span class="headline-shine"> одного сканирования QR.</span>
+        <div>
+          <div class="pill beta">Beta доступ бесплатно на 1 год</div>
+          <h1 style="margin-top: 24px;">
+            Система лояльности через<br />
+            <span class="gradient-text">Telegram и WhatsApp</span>
           </h1>
-
           <p class="lead">
-            Retkit работает через <strong>Telegram</strong> и <strong>WhatsApp</strong>.
-            Клиент подключается в 1 клик - без приложений, без сложных форм и без долгой регистрации.
+            Клиенты подключаются к программе лояльности за 1 клик. Без приложений. Без долгих регистраций. Только сканирование QR и привычный мессенджер.
           </p>
 
-          <div class="actions">
-            <button class="btn btn-primary" type="button">Стать Founding Partner</button>
-            <button class="btn btn-secondary" type="button">Посмотреть Beta-возможности</button>
+          <div class="cta-row">
+            <button class="btn btn-primary" type="button">Получить Beta доступ</button>
+            <a href="#how-it-works" class="btn btn-secondary">Как это работает</a>
           </div>
 
-          <div class="metric-grid">
-            <article class="metric reveal">
-              <div class="metric-label">Beta-доступ</div>
-              <div class="metric-value">1 год бесплатно</div>
-            </article>
-            <article class="metric reveal">
-              <div class="metric-label">Подключение клиента</div>
-              <div class="metric-value">1 клик</div>
-            </article>
-            <article class="metric reveal">
-              <div class="metric-label">Каналы входа</div>
-              <div class="metric-value">Telegram + WhatsApp</div>
-            </article>
+          <div class="mini-grid">
+            <div class="mini-card">
+              <div class="mini-label">Подключение</div>
+              <div class="mini-value">1 клик</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Каналы</div>
+              <div class="mini-value">TG + WA</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Подключение</div>
+              <div class="mini-value">100% без помощи</div>
+            </div>
           </div>
         </div>
 
-        <div class="preview-wrap reveal">
-          <div class="preview">
-            <div class="preview-top">
-              <div>
-                <div class="eyebrow">Preview</div>
-                <div class="preview-title">Retkit Dashboard</div>
-              </div>
-              <div class="preview-chip">Beta active</div>
+        <div class="demo-panel">
+          <div class="demo-top">
+            <div>
+              <div class="eyebrow">Live demo</div>
+              <div class="demo-title">Retkit Interface</div>
             </div>
+            <div class="demo-chip">Beta Preview</div>
+          </div>
 
-            <div class="mini-stats">
-              <div class="mini-stat">
-                <div class="eyebrow">Наши друзья</div>
-                <div class="big-number">1,284</div>
-                <div class="subtext">Собранная база клиентов</div>
-              </div>
-              <div class="mini-stat">
-                <div class="eyebrow">Операции</div>
-                <div class="big-number">4,872</div>
-                <div class="subtext">История действий и начислений</div>
-              </div>
-            </div>
-
-            <div class="preview-card">
-              <div class="preview-row">
+          <div class="demo-stack">
+            <div class="demo-card">
+              <div class="demo-flex">
                 <div>
-                  <div class="eyebrow">Подключение</div>
-                  <div class="metric-value">QR -> Telegram / WhatsApp</div>
+                  <div class="eyebrow">Подключение клиентов</div>
+                  <div class="mini-value">QR -> Telegram / WhatsApp</div>
                 </div>
-                <div class="qr-box">QR</div>
+                <a href="https://t.me/TEST_GUEST_LOYALTY_BOT" target="_blank" rel="noreferrer" class="qr-link">
+                  <img src="/telegram_qr_retkit.jpg" alt="Retkit Telegram QR" />
+                </a>
               </div>
               <div class="progress"><span></span></div>
-              <div class="subtext">72% клиентов подключаются без помощи сотрудника</div>
+              <div class="good-text" style="margin-top: 12px; font-size: 14px;">100% клиентов подключаются без помощи сотрудника</div>
+              <div class="demo-buttons">
+                <a href="https://t.me/TEST_GUEST_LOYALTY_BOT" target="_blank" rel="noreferrer" class="btn btn-primary">Открыть в Telegram</a>
+                <button class="btn btn-secondary" type="button">Сканируйте QR</button>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="demo-card">
+                <div class="eyebrow">База клиентов</div>
+                <div class="demo-list">
+                  <div class="demo-item">Новый клиент подключён</div>
+                  <div class="demo-item">Повторный визит зафиксирован</div>
+                  <div class="demo-item">Бонус начислен автоматически</div>
+                </div>
+              </div>
+
+              <div class="demo-card">
+                <div class="eyebrow">Founding Partners</div>
+                <div style="margin-top: 12px; font-size: 44px; font-weight: 600;">12 / 50</div>
+                <div style="margin-top: 8px; color: var(--muted-soft); font-size: 14px;">Компаний уже в раннем доступе</div>
+                <div class="progress founding"><span></span></div>
+                <div class="demo-list" style="margin-top: 16px;">
+                  <div class="stat-row"><span>Бесплатный доступ</span><span style="color:#fff;">1 год</span></div>
+                  <div class="stat-row"><span>Новые функции</span><span style="color:#fff;">раньше всех</span></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="section-head reveal">
-          <div class="eyebrow">Проблема</div>
-          <h2>Большинство программ лояльности теряют клиента ещё до регистрации.</h2>
-          <p class="section-copy">
-            Сложный вход убивает удержание. Если клиенту нужно что-то скачивать, искать или долго заполнять - он просто не подключается.
-          </p>
-        </div>
-
-        <div class="card-grid four">
-          <article class="card reveal">
-            <div class="card-tag">Проблема</div>
-            <p>Нужно устанавливать отдельное приложение</p>
-          </article>
-          <article class="card reveal">
-            <div class="card-tag">Проблема</div>
-            <p>Слишком долгая регистрация</p>
-          </article>
-          <article class="card reveal">
-            <div class="card-tag">Проблема</div>
-            <p>Клиенты забывают о программе</p>
-          </article>
-          <article class="card reveal">
-            <div class="card-tag">Проблема</div>
-            <p>Бизнес не собирает полноценную базу</p>
-          </article>
+        <div class="eyebrow">Проблема</div>
+        <h2 style="margin-top: 16px; max-width: 820px;">Почему обычные программы лояльности не работают</h2>
+        <div class="grid-4" style="margin-top: 40px;">
+          <article class="card"><div class="tag-danger">Проблема</div><div>Нужно устанавливать отдельное приложение</div></article>
+          <article class="card"><div class="tag-danger">Проблема</div><div>Слишком долгая регистрация</div></article>
+          <article class="card"><div class="tag-danger">Проблема</div><div>Клиенты забывают о программе</div></article>
+          <article class="card"><div class="tag-danger">Проблема</div><div>Бизнес не собирает базу клиентов</div></article>
         </div>
       </section>
 
-      <section class="section split two">
-        <div class="reveal">
-          <div class="eyebrow">Решение</div>
-          <h2>Retkit работает там, где клиенту уже удобно.</h2>
-          <p class="section-copy">
-            Вместо отдельного приложения - привычные мессенджеры. Вместо длинной анкеты - один клик. Вместо потери контакта - живая база клиентов, с которой можно работать.
-          </p>
-        </div>
-
-        <div class="card-grid two">
-          <article class="card reveal">
-            <h3>Telegram как точка входа</h3>
-            <p>Простой сценарий, который не требует дополнительных действий от клиента.</p>
-          </article>
-          <article class="card reveal">
-            <h3>WhatsApp как точка входа</h3>
-            <p>Простой сценарий, который не требует дополнительных действий от клиента.</p>
-          </article>
-          <article class="card reveal">
-            <h3>QR-подключение за секунды</h3>
-            <p>Простой сценарий, который не требует дополнительных действий от клиента.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Отдельный интерфейс для каждого бизнеса</h3>
-            <p>Простой сценарий, который не требует дополнительных действий от клиента.</p>
-          </article>
+      <section id="how-it-works" class="section">
+        <div class="eyebrow">Как это работает</div>
+        <h2 style="margin-top: 16px; max-width: 760px;">Подключение занимает меньше минуты</h2>
+        <div class="grid-4" style="margin-top: 40px;">
+          <article class="step"><div class="step-num">01</div><h3>Клиент сканирует QR</h3><p>QR размещается в точке контакта с клиентом: на кассе, стойке или визитке.</p></article>
+          <article class="step"><div class="step-num">02</div><h3>Выбирает мессенджер</h3><p>Открывается Telegram или WhatsApp - клиент сам выбирает удобный канал.</p></article>
+          <article class="step"><div class="step-num">03</div><h3>Регистрация</h3><p>Подключение происходит в один клик, без приложения и сложной формы.</p></article>
+          <article class="step"><div class="step-num">04</div><h3>Клиент в системе</h3><p>Сразу попадает в программу лояльности и становится частью вашей базы.</p></article>
         </div>
       </section>
 
-      <section class="section">
-        <div class="section-head reveal">
-          <div class="eyebrow">Как это работает</div>
-          <h2>Подключение клиента занимает меньше минуты.</h2>
-        </div>
-
-        <div class="step-grid">
-          <article class="step reveal">
-            <div class="step-num">01</div>
-            <h3>Клиент сканирует QR</h3>
-            <p>В точке контакта: на кассе, на стойке, в меню или на визитке.</p>
-          </article>
-          <article class="step reveal">
-            <div class="step-num">02</div>
-            <h3>Выбирает мессенджер</h3>
-            <p>Открывается Telegram или WhatsApp - клиент сам выбирает удобный канал.</p>
-          </article>
-          <article class="step reveal">
-            <div class="step-num">03</div>
-            <h3>Регистрируется в 1 клик</h3>
-            <p>Без приложения, без длинной формы, без лишних действий.</p>
-          </article>
-          <article class="step reveal">
-            <div class="step-num">04</div>
-            <h3>Попадает в вашу систему лояльности</h3>
-            <p>Бизнес получает контакт, историю операций и точку для дальнейшего удержания.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="section split founding">
-        <div class="card reveal">
+      <section class="section split">
+        <div class="card" style="padding: 28px;">
           <div class="eyebrow">Founding Partners</div>
-          <h2>Запуск через клуб ранних партнёров.</h2>
-          <p class="section-copy">
-            Retkit открывает первую Beta-версию для бизнеса, который хочет зайти раньше рынка, бесплатно протестировать платформу и получить сильные условия на будущее развитие продукта.
-          </p>
-
-          <div class="highlight-box">
-            <div class="eyebrow">Ранний доступ</div>
+          <h2 style="margin-top: 16px; font-size: clamp(32px, 4vw, 50px);">Ранние партнёры получают больше, чем просто доступ к Beta</h2>
+          <p class="section-copy">Retkit открывает платформу для первых компаний, которые хотят зайти раньше рынка, получить бесплатный доступ на год и первыми подключить будущие платные инструменты роста.</p>
+          <div class="highlight">
+            <div class="eyebrow">Преимущество ранних партнёров</div>
             <div class="highlight-title">1 год бесплатного доступа</div>
-            <div class="subtext">Первые партнёры получают Beta без оплаты и подключают новые функции первыми.</div>
+            <div style="margin-top: 8px; color: var(--muted);">Плюс ранний доступ к новым функциям и участие в развитии платформы.</div>
           </div>
         </div>
 
-        <div class="card-grid two">
-          <article class="card reveal">
-            <div class="accent-tag">Beta feature</div>
-            <h3>Регистрация клиентов в 1 клик</h3>
-          </article>
-          <article class="card reveal">
-            <div class="accent-tag">Beta feature</div>
-            <h3>Бонусная система</h3>
-          </article>
-          <article class="card reveal">
-            <div class="accent-tag">Beta feature</div>
-            <h3>База «наших друзей»</h3>
-          </article>
-          <article class="card reveal">
-            <div class="accent-tag">Beta feature</div>
-            <h3>История операций</h3>
-          </article>
-          <article class="card reveal">
-            <div class="accent-tag">Beta feature</div>
-            <h3>Служба поддержки</h3>
-          </article>
-          <article class="card reveal">
-            <div class="accent-tag">Beta feature</div>
-            <h3>Стать партнёром</h3>
-          </article>
+        <div class="grid-2">
+          <article class="card"><div class="pill">Beta feature</div><h3 style="margin-top:16px;">Регистрация клиентов в 1 клик</h3></article>
+          <article class="card"><div class="pill">Beta feature</div><h3 style="margin-top:16px;">Бонусная система</h3></article>
+          <article class="card"><div class="pill">Beta feature</div><h3 style="margin-top:16px;">База наших друзей</h3></article>
+          <article class="card"><div class="pill">Beta feature</div><h3 style="margin-top:16px;">История операций</h3></article>
+          <article class="card"><div class="pill">Beta feature</div><h3 style="margin-top:16px;">Служба поддержки</h3></article>
+          <article class="card"><div class="pill">Beta feature</div><h3 style="margin-top:16px;">Статус раннего партнёра</h3></article>
         </div>
       </section>
 
       <section class="section">
-        <div class="section-head reveal">
-          <div class="eyebrow">Roadmap</div>
-          <h2>Продукт развивается публично - клиент видит, что уже работает и что появится дальше.</h2>
-          <p class="section-copy">
-            Сейчас Retkit закрывает быстрый вход и базовую лояльность. Следующий этап - коммуникация с клиентской базой и платные инструменты роста.
-          </p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="roadmap-card reveal">
-            <div class="roadmap-tag now">Уже доступно</div>
+        <div class="eyebrow">Roadmap</div>
+        <h2 style="margin-top: 16px; max-width: 860px;">Retkit развивается как продукт, а не как разовая акция</h2>
+        <p class="section-copy">Сейчас платформа закрывает быстрый вход в лояльность. Следующий этап - коммуникация с клиентской базой и инструменты роста для бизнеса.</p>
+        <div class="grid-3" style="margin-top: 40px;">
+          <article class="roadmap-card">
+            <div class="roadmap-badge now">Уже доступно</div>
+            <h3 style="margin-top: 16px;">База продукта</h3>
             <div class="list">
-              <div class="list-item"><span class="list-bullet"></span><span>Регистрация в 1 клик</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>Бонусная система</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>База клиентов</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>История операций</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>Поддержка партнёров</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Регистрация в 1 клик</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Бонусная система</span></div>
+              <div class="list-row"><span class="bullet"></span><span>База клиентов</span></div>
+              <div class="list-row"><span class="bullet"></span><span>История операций</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Поддержка партнёров</span></div>
             </div>
           </article>
-          <article class="roadmap-card reveal">
-            <div class="roadmap-tag next">В разработке</div>
+          <article class="roadmap-card">
+            <div class="roadmap-badge next">В разработке</div>
+            <h3 style="margin-top: 16px;">Следующий этап</h3>
             <div class="list">
-              <div class="list-item"><span class="list-bullet"></span><span>Рассылки клиентам</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>Напоминания о визитах</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>Уведомления об акциях</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>Уведомления о новинках</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Рассылки клиентам</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Напоминания</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Уведомления об акциях</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Уведомления о новинках</span></div>
             </div>
           </article>
-          <article class="roadmap-card reveal">
-            <div class="roadmap-tag later">Планируется</div>
+          <article class="roadmap-card">
+            <div class="roadmap-badge later">Дальше</div>
+            <h3 style="margin-top: 16px;">Рост платформы</h3>
             <div class="list">
-              <div class="list-item"><span class="list-bullet"></span><span>Автоматические маркетинговые сценарии</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>Аналитика повторных покупок</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>Сегментация клиентской базы</span></div>
-              <div class="list-item"><span class="list-bullet"></span><span>Дополнительные инструменты удержания</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Маркетинговые сценарии</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Сегментация клиентской базы</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Инструменты удержания</span></div>
+              <div class="list-row"><span class="bullet"></span><span>Расширенные возможности платформы</span></div>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="section split ecosystem">
-        <div class="reveal">
+      <section class="section split" style="grid-template-columns: 1fr 1fr;">
+        <div>
           <div class="eyebrow">Экосистема</div>
-          <h2>Retkit - это не просто бонусы. Это база, канал связи и фундамент для роста.</h2>
-          <p class="section-copy">
-            Сегодня бизнес получает лояльность и понятный вход в систему. Завтра - инструменты удержания, маркетинга и работы с собственной аудиторией.
-          </p>
+          <h2 style="margin-top: 16px;">Retkit строит экосистему бизнеса</h2>
+          <p class="section-copy">Каждый партнёр получает собственную базу клиентов и инструменты взаимодействия через мессенджеры. Сегодня - лояльность и быстрый вход. Дальше - удержание, коммуникация и рост.</p>
         </div>
-
-        <div class="card-grid two">
-          <article class="card reveal">
-            <h3>Собственная база клиентов</h3>
-            <p>Не разовая механика, а инструмент, который усиливается по мере развития платформы.</p>
-          </article>
-          <article class="card reveal">
-            <h3>История касаний и операций</h3>
-            <p>Не разовая механика, а инструмент, который усиливается по мере развития платформы.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Будущие рассылки и акции</h3>
-            <p>Не разовая механика, а инструмент, который усиливается по мере развития платформы.</p>
-          </article>
-          <article class="card reveal">
-            <h3>Масштабирование в экосистему Retkit</h3>
-            <p>Не разовая механика, а инструмент, который усиливается по мере развития платформы.</p>
-          </article>
+        <div class="grid-2">
+          <article class="card"><h3>Собственная база клиентов</h3><p style="color: var(--muted); margin: 12px 0 0;">Платформа усиливается по мере подключения новых функций и новых партнёров.</p></article>
+          <article class="card"><h3>История операций</h3><p style="color: var(--muted); margin: 12px 0 0;">Платформа усиливается по мере подключения новых функций и новых партнёров.</p></article>
+          <article class="card"><h3>Будущие рассылки и акции</h3><p style="color: var(--muted); margin: 12px 0 0;">Платформа усиливается по мере подключения новых функций и новых партнёров.</p></article>
+          <article class="card"><h3>Маркетинговые инструменты</h3><p style="color: var(--muted); margin: 12px 0 0;">Платформа усиливается по мере подключения новых функций и новых партнёров.</p></article>
         </div>
       </section>
 
       <section class="section">
-        <div class="eyebrow reveal">Для кого подходит</div>
-        <div class="industry-grid">
-          <article class="industry reveal">Авто тематика</article>
-          <article class="industry reveal">Общепит</article>
-          <article class="industry reveal">Уход за собой</article>
-          <article class="industry reveal">Магазины</article>
-          <article class="industry reveal">Сервисный бизнес</article>
-          <article class="industry reveal">И другие сферы</article>
+        <div class="eyebrow">Для кого подходит</div>
+        <h2 style="margin-top: 16px; max-width: 760px;">Подходит для любого бизнеса</h2>
+        <div class="industries" style="margin-top: 40px;">
+          <article class="industry">Авто тематика</article>
+          <article class="industry">Общепит</article>
+          <article class="industry">Индустрия красоты</article>
+          <article class="industry">Магазины</article>
+          <article class="industry">Сервисный бизнес</article>
+          <article class="industry">И другие сферы</article>
         </div>
       </section>
 
-      <section class="section">
-        <div class="cta-box reveal">
-          <div class="cta-grid">
-            <div>
-              <div class="eyebrow">Финальный акцент</div>
-              <h2>Станьте одним из первых партнёров Retkit и начните собирать собственную базу клиентов уже сейчас.</h2>
-              <p class="section-copy">
-                Бесплатный доступ на 1 год. Быстрый старт через QR. Клиент выбирает Telegram или WhatsApp - и сразу попадает в вашу программу лояльности.
-              </p>
-              <div class="actions">
-                <button class="btn btn-primary" type="button">Подключиться к Beta</button>
-                <button class="btn btn-secondary" type="button">Обсудить на встрече</button>
-              </div>
-            </div>
-
-            <div class="qr-panel">
-              <div>
-                <div class="qr-core">QR</div>
-                <p style="margin-top: 20px;">Telegram / WhatsApp</p>
-                <strong>Подключение за 1 клик</strong>
-              </div>
-            </div>
-          </div>
+      <section class="section final-box">
+        <div class="eyebrow">Финальный шаг</div>
+        <h2 style="margin-top: 16px;">Станьте одним из первых партнёров Retkit</h2>
+        <p class="section-copy">Бесплатный доступ на 1 год для участников Beta. Клиент подключается через QR и сразу попадает в вашу программу лояльности через Telegram или WhatsApp.</p>
+        <div class="cta-row" style="justify-content: center;">
+          <button class="btn btn-primary" type="button">Подключиться к Beta</button>
+          <button class="btn btn-secondary" type="button">Обсудить на встрече</button>
         </div>
       </section>
     </main>
+
+    <div id="stickyCta" class="sticky-cta">
+      <button class="btn btn-primary" type="button">Стать Founding Partner</button>
+    </div>
   </div>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.12 });
+    const stickyCta = document.getElementById('stickyCta');
 
-    document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
+    function updateStickyVisibility() {
+      if (window.scrollY > 620) {
+        stickyCta.classList.add('visible');
+      } else {
+        stickyCta.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', updateStickyVisibility);
+    updateStickyVisibility();
   </script>
 </body>
 </html>

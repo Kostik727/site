@@ -534,6 +534,150 @@
       color: #f0abfc;
     }
 
+
+    .ai-section {
+      display: grid;
+      gap: 32px;
+    }
+
+    .ai-hero {
+      display: grid;
+      gap: 32px;
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+    }
+
+    .ai-feature-grid {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 32px;
+    }
+
+    .ai-feature {
+      padding: 20px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      transition: background .25s ease, transform .25s ease;
+    }
+
+    .ai-feature:hover {
+      background: rgba(255,255,255,0.05);
+      transform: translateY(-2px);
+    }
+
+    .ai-feature-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .ai-dot,
+    .price-dot {
+      width: 10px;
+      height: 10px;
+      margin-top: 7px;
+      flex: 0 0 auto;
+      border-radius: 999px;
+      background: #34d399;
+    }
+
+    .price-dot.cyan {
+      background: #67e8f9;
+    }
+
+    .ai-chat {
+      padding: 32px;
+      border-radius: 32px;
+      border: 1px solid var(--line);
+      background: #0c1016;
+      box-shadow: var(--shadow);
+    }
+
+    .chat-stack {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .chat-bubble {
+      max-width: 80%;
+      padding: 14px 16px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.80);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .chat-bubble.reply {
+      margin-left: auto;
+      border-color: rgba(52,211,153,0.20);
+      background: rgba(52,211,153,0.10);
+      color: #fff;
+    }
+
+    .ai-pricing {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 24px;
+    }
+
+    .price-card {
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .price-card.growth {
+      border-color: rgba(34,211,238,0.20);
+      background: rgba(34,211,238,0.10);
+    }
+
+    .price-pill {
+      display: inline-flex;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      border: 1px solid rgba(52,211,153,0.20);
+      background: rgba(52,211,153,0.10);
+      color: #86efac;
+    }
+
+    .price-pill.cyan {
+      border-color: rgba(103,232,249,0.20);
+      background: rgba(12,16,22,0.85);
+      color: #67e8f9;
+    }
+
+    .price-amount {
+      margin-top: 12px;
+      font-size: 40px;
+      font-weight: 600;
+      letter-spacing: -0.04em;
+    }
+
+    .price-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .price-item {
+      display: flex;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: rgba(255,255,255,0.78);
+      font-size: 14px;
+      line-height: 1.5;
+    }
     .ecosystem-section {
       display: block;
     }
@@ -733,6 +877,24 @@
 
       .qr-demo h2 {
         font-size: 26px;
+      }
+
+      .ai-hero,
+      .ai-pricing,
+      .ai-feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ai-chat {
+        padding: 20px;
+      }
+
+      .chat-bubble {
+        max-width: 100%;
+      }
+
+      .price-card {
+        padding: 22px;
       }
 
       .sticky-cta {
@@ -941,6 +1103,67 @@
         </div>
       </section>
 
+
+      <section class="section ai-section">
+        <div class="ai-hero">
+          <div>
+            <div class="eyebrow">AI Sales Manager</div>
+            <h2 style="margin-top: 16px; max-width: 760px;">Пока сотрудники заняты,<br />AI менеджер продолжает продавать</h2>
+            <p class="section-copy" style="max-width: 760px;">Retkit AI отвечает клиентам в Telegram и WhatsApp, консультирует по товарам и услугам и помогает довести диалог до заявки даже вне рабочего времени.</p>
+            <div class="ai-feature-grid">
+              <div class="ai-feature"><div class="ai-feature-row"><div class="ai-dot"></div><div>Отвечает клиентам 24/7</div></div></div>
+              <div class="ai-feature"><div class="ai-feature-row"><div class="ai-dot"></div><div>Не теряет заявки вечером и ночью</div></div></div>
+              <div class="ai-feature"><div class="ai-feature-row"><div class="ai-dot"></div><div>Консультирует по товарам и услугам</div></div></div>
+              <div class="ai-feature"><div class="ai-feature-row"><div class="ai-dot"></div><div>Передаёт сложные вопросы менеджеру</div></div></div>
+              <div class="ai-feature"><div class="ai-feature-row"><div class="ai-dot"></div><div>Помогает довести клиента до записи</div></div></div>
+              <div class="ai-feature"><div class="ai-feature-row"><div class="ai-dot"></div><div>Работает в Telegram и WhatsApp</div></div></div>
+            </div>
+          </div>
+
+          <div class="ai-chat">
+            <div class="eyebrow">Live conversation</div>
+            <h3 style="margin-top: 8px; font-size: 32px;">Как это выглядит для клиента</h3>
+            <div class="chat-stack">
+              <div class="chat-bubble">Здравствуйте, сколько стоит замена масла?</div>
+              <div class="chat-bubble reply">Замена масла стоит от 15 000 тг.<br />Могу сразу помочь записаться.</div>
+              <div class="chat-bubble">А можно завтра после 18:00?</div>
+              <div class="chat-bubble reply">Да, есть свободное время после 18:00.<br />Оставить вас на запись?</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-pricing">
+          <div class="price-card">
+            <div class="price-pill">Beta</div>
+            <h3 style="margin-top: 16px; font-size: 32px;">Базовая версия Retkit</h3>
+            <div class="price-amount">Бесплатно</div>
+            <p style="margin-top: 16px; color: var(--muted);">Подключение программы лояльности и сбор базы клиентов.</p>
+            <div class="price-list">
+              <div class="price-item"><div class="price-dot"></div><span>Доступ на 1 год</span></div>
+              <div class="price-item"><div class="price-dot"></div><span>Регистрация клиентов в 1 клик</span></div>
+              <div class="price-item"><div class="price-dot"></div><span>Бонусная система</span></div>
+              <div class="price-item"><div class="price-dot"></div><span>База клиентов</span></div>
+              <div class="price-item"><div class="price-dot"></div><span>История операций</span></div>
+              <div class="price-item"><div class="price-dot"></div><span>Поддержка партнёров</span></div>
+            </div>
+          </div>
+
+          <div class="price-card growth">
+            <div class="price-pill cyan">Growth Feature</div>
+            <h3 style="margin-top: 16px; font-size: 32px;">AI менеджер продаж</h3>
+            <div class="price-amount">Premium</div>
+            <p style="margin-top: 16px; color: rgba(255,255,255,0.80);">AI отвечает клиентам автоматически и помогает довести диалог до записи или продажи.</p>
+            <div class="price-list">
+              <div class="price-item" style="background: rgba(12,16,22,0.60);"><div class="price-dot cyan"></div><span>Автоответы клиентам</span></div>
+              <div class="price-item" style="background: rgba(12,16,22,0.60);"><div class="price-dot cyan"></div><span>Консультация по товарам</span></div>
+              <div class="price-item" style="background: rgba(12,16,22,0.60);"><div class="price-dot cyan"></div><span>Обработка заявок ночью</span></div>
+              <div class="price-item" style="background: rgba(12,16,22,0.60);"><div class="price-dot cyan"></div><span>Доведение диалога до покупки</span></div>
+              <div class="price-item" style="background: rgba(12,16,22,0.60);"><div class="price-dot cyan"></div><span>Передача менеджеру при необходимости</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="section ecosystem-section">
         <div class="ecosystem-copy">
           <div class="eyebrow">Экосистема</div>
@@ -1012,6 +1235,10 @@
   </script>
 </body>
 </html>
+
+
+
+
 
 
 

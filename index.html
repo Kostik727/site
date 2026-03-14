@@ -533,11 +533,9 @@
       background: rgba(217,70,239,0.10);
       color: #f0abfc;
     }
-
-
     .ai-section {
       display: grid;
-      gap: 32px;
+      gap: 40px;
     }
 
     .ai-hero {
@@ -567,14 +565,16 @@
       transform: translateY(-2px);
     }
 
-    .ai-feature-row {
+    .ai-feature-row,
+    .price-item {
       display: flex;
       align-items: flex-start;
       gap: 12px;
     }
 
     .ai-dot,
-    .price-dot {
+    .price-dot,
+    .widget-dot {
       width: 10px;
       height: 10px;
       margin-top: 7px;
@@ -587,7 +587,8 @@
       background: #67e8f9;
     }
 
-    .ai-chat {
+    .ai-chat,
+    .ai-widget-shell {
       padding: 32px;
       border-radius: 32px;
       border: 1px solid var(--line);
@@ -619,11 +620,132 @@
       color: #fff;
     }
 
+    .ai-widget-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: start;
+    }
+
+    .ai-widget-panel {
+      padding: 16px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .ai-widget-inner {
+      padding: 16px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background: #07090d;
+    }
+
+    .widget-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .widget-chip {
+      display: inline-flex;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(34,211,238,0.20);
+      background: rgba(34,211,238,0.10);
+      color: #67e8f9;
+      font-size: 12px;
+    }
+
+    .widget-messages {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .widget-bubble {
+      max-width: 85%;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.80);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .widget-bubble.reply {
+      margin-left: auto;
+      border-color: rgba(52,211,153,0.20);
+      background: rgba(52,211,153,0.10);
+      color: #fff;
+    }
+
+    .widget-input-box {
+      margin-top: 16px;
+      padding: 14px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .widget-input-row {
+      display: flex;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .widget-input {
+      width: 100%;
+      min-width: 0;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #0d1118;
+      color: #fff;
+      padding: 14px 16px;
+      font: inherit;
+      outline: none;
+    }
+
+    .widget-input::placeholder {
+      color: rgba(255,255,255,0.30);
+    }
+
+    .demo-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 999px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+
+    .demo-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .demo-link.secondary {
+      margin-top: 24px;
+      padding: 12px 20px;
+      border: 1px solid var(--line-strong);
+      color: rgba(255,255,255,0.90);
+    }
+
+    .demo-link.primary {
+      white-space: nowrap;
+      padding: 14px 20px;
+      background: #fff;
+      color: #000;
+      font-weight: 500;
+    }
+
     .ai-pricing {
       display: grid;
       gap: 16px;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      margin-top: 24px;
     }
 
     .price-card {
@@ -668,8 +790,6 @@
     }
 
     .price-item {
-      display: flex;
-      gap: 12px;
       padding: 14px 16px;
       border-radius: 18px;
       border: 1px solid var(--line);
@@ -881,20 +1001,32 @@
 
       .ai-hero,
       .ai-pricing,
-      .ai-feature-grid {
+      .ai-feature-grid,
+      .ai-widget-grid {
         grid-template-columns: 1fr;
       }
 
-      .ai-chat {
+      .ai-chat,
+      .ai-widget-shell {
         padding: 20px;
       }
 
-      .chat-bubble {
+      .chat-bubble,
+      .widget-bubble {
         max-width: 100%;
       }
 
       .price-card {
         padding: 22px;
+      }
+
+      .widget-input-row {
+        flex-direction: column;
+      }
+
+      .demo-link.primary,
+      .demo-link.secondary {
+        width: 100%;
       }
 
       .sticky-cta {
@@ -1104,7 +1236,7 @@
       </section>
 
 
-      <section class="section ai-section">
+            <section class="section ai-section">
         <div class="ai-hero">
           <div>
             <div class="eyebrow">AI Sales Manager</div>
@@ -1118,6 +1250,10 @@
               <div class="ai-feature"><div class="ai-feature-row"><div class="ai-dot"></div><div>Помогает довести клиента до записи</div></div></div>
               <div class="ai-feature"><div class="ai-feature-row"><div class="ai-dot"></div><div>Работает в Telegram и WhatsApp</div></div></div>
             </div>
+            <div class="cta-row">
+              <a href="https://t.me/TEST_GUEST_LOYALTY_BOT" target="_blank" rel="noreferrer" class="btn btn-primary">Протестировать AI менеджера</a>
+              <button class="btn btn-secondary" type="button">Посмотреть демо</button>
+            </div>
           </div>
 
           <div class="ai-chat">
@@ -1128,6 +1264,54 @@
               <div class="chat-bubble reply">Замена масла стоит от 15 000 тг.<br />Могу сразу помочь записаться.</div>
               <div class="chat-bubble">А можно завтра после 18:00?</div>
               <div class="chat-bubble reply">Да, есть свободное время после 18:00.<br />Оставить вас на запись?</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ai-widget-shell">
+          <div class="demo-top" style="margin-bottom: 24px;">
+            <div>
+              <div class="eyebrow">AI Widget Demo</div>
+              <h3 style="margin-top: 8px; font-size: 32px;">Протестируйте AI прямо на сайте</h3>
+            </div>
+            <div class="pill beta">Demo online</div>
+          </div>
+
+          <div class="ai-widget-grid">
+            <div>
+              <p style="margin: 0; color: var(--muted); line-height: 1.8;">На встрече клиент может сразу попробовать, как отвечает AI менеджер. Это один из самых сильных способов показать продукт вживую.</p>
+              <div class="price-list">
+                <div class="price-item"><div class="widget-dot"></div><span>Клиент не уходит с сайта</span></div>
+                <div class="price-item"><div class="widget-dot"></div><span>Можно показать ответ в реальном времени</span></div>
+                <div class="price-item"><div class="widget-dot"></div><span>Подходит для встреч и презентаций</span></div>
+                <div class="price-item"><div class="widget-dot"></div><span>После теста можно перевести в Telegram</span></div>
+              </div>
+              <a href="https://t.me/TEST_GUEST_LOYALTY_BOT" target="_blank" rel="noreferrer" class="demo-link secondary">Открыть полного AI в Telegram</a>
+            </div>
+
+            <div class="ai-widget-panel">
+              <div class="ai-widget-inner">
+                <div class="widget-header">
+                  <div>
+                    <div style="font-size: 14px; font-weight: 500; color: #fff;">Retkit AI</div>
+                    <div style="font-size: 12px; color: rgba(255,255,255,0.45);">Встроенный демо-виджет</div>
+                  </div>
+                  <div class="widget-chip">24/7 online</div>
+                </div>
+
+                <div class="widget-messages">
+                  <div class="widget-bubble">Есть ли у вас бонусная система для клиентов?</div>
+                  <div class="widget-bubble reply">Да, Retkit помогает подключать клиентов через QR, начислять бонусы и собирать базу в Telegram и WhatsApp.</div>
+                </div>
+
+                <div class="widget-input-box">
+                  <div class="eyebrow">Попробовать демо</div>
+                  <div class="widget-input-row">
+                    <input class="widget-input" type="text" placeholder="Например: Как это работает для автосервиса?" />
+                    <a href="https://t.me/TEST_GUEST_LOYALTY_BOT" target="_blank" rel="noreferrer" class="demo-link primary">Написать AI</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -1235,6 +1419,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 

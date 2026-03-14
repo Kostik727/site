@@ -623,11 +623,12 @@
     .ai-widget-grid {
       display: grid;
       gap: 24px;
-      grid-template-columns: 0.9fr 1.1fr;
-      align-items: start;
+      grid-template-columns: 1fr;
+      justify-items: center;
     }
 
     .ai-widget-panel {
+      width: min(100%, 760px);
       padding: 16px;
       border-radius: 28px;
       border: 1px solid var(--line);
@@ -1003,8 +1004,11 @@
       .ai-pricing,
       .ai-feature-grid,
       .ai-widget-grid {
-        grid-template-columns: 1fr;
-      }
+      display: grid;
+      gap: 24px;
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
 
       .ai-chat,
       .ai-widget-shell {
@@ -1278,12 +1282,6 @@
           </div>
 
           <div class="ai-widget-grid">
-            <div>
-              <p style="margin: 0; color: var(--muted); line-height: 1.8;">На встрече клиент может сразу попробовать, как отвечает AI менеджер. Это один из самых сильных способов показать продукт вживую.</p>
-
-              <a href="https://t.me/TEST_GUEST_LOYALTY_BOT" target="_blank" rel="noreferrer" class="demo-link secondary">Открыть полного AI в Telegram</a>
-            </div>
-
             <div class="ai-widget-panel">
               <div class="ai-widget-inner">
                 <div class="widget-header">
@@ -1414,6 +1412,14 @@
   </script>
 </body>
 </html>
+
+
+
+
+
+
+
+
 
 
 

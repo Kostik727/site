@@ -191,9 +191,11 @@
       flex-wrap: wrap;
       gap: 16px;
       margin-top: 32px;
-    }
-
-    .btn {
+    }    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       min-height: 52px;
       padding: 0 24px;
       border-radius: 999px;
@@ -571,10 +573,15 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    .sticky-cta .btn {
-      padding: 0 28px;
-      min-height: 56px;
-      box-shadow: 0 24px 50px rgba(0,0,0,0.35);
+    .sticky-cta    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 999px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
     }
 
 
@@ -694,10 +701,16 @@
 
       .demo-buttons .btn,
       .cta-row .btn,
-      .cta-row a.btn {
-        width: 100%;
-        justify-content: center;
-      }
+      .cta-row a    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 999px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
 
       .qr-link {
         width: 120px;
@@ -732,9 +745,16 @@
         transform: translateY(0);
       }
 
-      .sticky-cta .btn {
-        width: 100%;
-      }
+      .sticky-cta    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border-radius: 999px;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
     }
   </style>
 </head>
@@ -992,6 +1012,8 @@
   </script>
 </body>
 </html>
+
+
 
 
 
